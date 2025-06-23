@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ксения & Никита — Приглашение</title>
+  <style>
+    @font-face {
+      font-family: 'Ayres Royal';
+      src: url('ayres-royal-pdf.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Florisel Script';
+      src: url('Floriselscript.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Felidae';
+      src: url('Felidae.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      font-family: serif;
+      color: #181818;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .main {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 0;
+      box-sizing: border-box;
+    }
+    .main-names {
+      font-family: 'Florisel Script', serif;
+      font-size: 3.5em;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+      margin-top: 24px;
+      text-align: center;
+      line-height: 1;
+      text-transform: none;
+    }
+    .photos-row {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 32px;
+      width: 100%;
+      max-width: 100vw;
+      box-sizing: border-box;
+    }
+    .photo {
+      background: #eee;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    .photo.side {
+      width: 480px;
+      height: 640px;
+    }
+    .photo.center {
+      width: 600px;
+      height: 800px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+      z-index: 2;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .invite-message {
+      margin-top: 64px;
+      text-align: center;
+    }
+    .invite-title {
+      font-family: 'Felidae', serif;
+      font-size: 2.4em;
+      font-weight: normal;
+      margin-bottom: 48px;
+      margin-top: 0;
+      letter-spacing: 0.01em;
+    }
+    .invite-text {
+      font-family: 'Felidae', serif;
+      font-size: 1.5em;
+      font-weight: normal;
+      line-height: 1.3;
+      margin: 0 auto;
+      max-width: 900px;
+      letter-spacing: 0.01em;
+    }
+    .save-the-date {
+      margin-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 24px;
+      width: 100%;
+      max-width: 600px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      min-height: 520px;
+    }
+
+    .save-the-date-image img {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 24px;
+      width: 100%;
+      max-width: 600px;
+      width: 100%;
+      height: 100px;
+      box-sizing: border-box;
+      min-height: 520px;
+    }
+    .save-the-date-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      padding: 0;
+      margin-top: 282px;
+    }
+    .save-text {
+      font-family: 'Felidae', serif;
+      font-size: 3em;
+      font-weight: bold;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      margin-top: 0;
+      text-align: center;
+    }
+    .date-big {
+      font-family: 'Felidae', serif;
+      font-size: 2.2em;
+      margin: 0 0 12px 0;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+    .date-description {
+      font-family: 'Felidae', serif;
+      font-size: 1.3em;
+      margin: 0 0 18px 0;
+      letter-spacing: 0.01em;
+      text-align: center;
+    }
+    .countdown {
+      margin-top: 48px;
+      text-align: center;
+      font-family: 'Felidae', serif;
+    }
+    .countdown-inline {
+      margin-top: 48px;
+      text-align: left;
+      display: block;
+    }
+    .countdown-numbers {
+      display: flex;
+      justify-content: flex-start;
+      gap: 48px;
+      margin-top: 32px;
+    }
+    .countdown-item {
+      text-align: center;
+    }
+    .countdown-value {
+      font-size: 2.2em;
+      font-weight: bold;
+      margin: 0 0 8px 0;
+      letter-spacing: 0.01em;
+    }
+    .countdown-label {
+      font-size: 1em;
+      margin-top: 8px;
+      font-family: 'Felidae', serif;
+    }
+    .calendar-block {
+      margin-top: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Felidae', serif;
+      padding: 24px 8px 18px 8px;
+      margin-bottom: 32px;
+    }
+    .calendar {
+      background: #fff;
+      border: 2px solid #222;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 28px 18px 22px 18px;
+      display: inline-block;
+      margin-bottom: 12px;
+      max-width: 270px;
+    }
+    .calendar-month {
+      font-size: 1.3em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+    }
+    .calendar-table {
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+    .calendar-table td, .calendar-table th {
+      width: 32px;
+      height: 44px;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: normal;
+      position: relative;
+    }
+    .calendar-table th {
+      font-size: 0.9em;
+      color: #888;
+      font-weight: 400;
+    }
+    .calendar-heart {
+      color: #e63946;
+      font-size: 1.2em;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -60%);
+      pointer-events: none;
+      animation: pulse 1.2s infinite;
+      opacity: 0.4;
+    }
+    @keyframes pulse {
+      0% { transform: translate(-50%, -60%) scale(1); }
+      50% { transform: translate(-50%, -60%) scale(1.25); }
+      100% { transform: translate(-50%, -60%) scale(1); }
+    }
+    .calendar-table .wedding-day {
+      font-weight: bold;
+      color: #e63946;
+      background: #fff0f3;
+      border-radius: 50%;
+      position: relative;
+    }
+    .calendar-label {
+      font-size: 1.5em;
+      color: #222;
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: center;
+    }
+    .countdown.countdown-centered {
+      margin-top: 16px;
+      text-align: center;
+      display: block;
+      background: rgba(251, 238, 230, 0.85);
+      border-radius: 22px;
+      box-shadow: 0 4px 24px #b97a9522;
+      padding: 32px 18px;
+      margin-bottom: 32px;
+    }
+    .invite-final-message {
+      margin-top: 40px;
+      margin-bottom: 1px;
+      text-align: center;
+      font-family: 'Felidae', serif;
+      font-size: 2em;
+      font-weight: normal;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+      background: rgba(251, 238, 230, 0.85);
+      border-radius: 22px;
+      box-shadow: 0 4px 24px #b97a9522;
+      padding: 32px 18px;
+      margin-bottom: 32px;
+    }
+    .location {
+      margin-top: 80px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 32px;
+      width: 100%;
+      max-width: 1100px;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+    .location-content {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      padding: 24px 0 24px 0;
+      position: relative;
+    }
+    .location-title {
+      font-family: 'Felidae', serif;
+      font-size: 2.5em;
+      font-weight: bold;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+      text-align: left;
+      width: auto;
+    }
+    .location-wait, .location-address, .gift-message {
+      text-align: left;
+    }
+    .location-wait {
+      font-family: 'Felidae', serif;
+      font-size: 1.3em;
+      margin: 0 0 24px 0;
+      letter-spacing: 0.01em;
+      text-align: left;
+    }
+    .location-address {
+      font-family: 'Felidae', serif;
+      font-size: 1.2em;
+      margin: 0 0 64px 0;
+      letter-spacing: 0.01em;
+      line-height: 1.4;
+      text-align: left;
+    }
+    .gift-message {
+      font-family: 'Felidae', serif;
+      font-size: 1.45em;
+      line-height: 1.5;
+      margin: 0;
+      max-width: 800px;
+      letter-spacing: 0.01em;
+      color: #333;
+      margin-top: 48px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(251, 238, 230, 0.85);
+      border-radius: 22px;
+      box-shadow: 0 4px 24px #b97a9522;
+      padding: 32px 18px;
+      margin-bottom: 32px;
+    }
+    .location-image {
+      width: 100%;
+      min-width: 180px;
+      max-width: 420px;
+      margin-left: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      text-align: right;
+      margin-bottom: 0;
+    }
+    .location-image img {
+      width: 100%;
+      height: auto;
+      min-width: 180px;
+      max-width: 420px;
+      object-fit: cover;
+      display: block;
+    }
+    .dress-code-block {
+      margin: 100px auto 0 auto;
+      max-width: 900px;
+      padding: 48px 24px 64px 24px;
+      background: #faf9f7;
+      border-radius: 32px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+    .dress-code-title {
+      font-family: 'Felidae', serif;
+      font-size: 2.2em;
+      text-align: center;
+      margin-bottom: 12px;
+      color: #222;
+      font-weight: 500;
+    }
+    .dress-code-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .dress-code-label {
+      font-family: 'Felidae', serif;
+      font-size: 1.5em;
+      margin-bottom: 16px;
+      color: #444;
+      text-align: center;
+    }
+    .dress-code-palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 12px;
+      justify-content: center;
+      margin-bottom: 8px;
+      max-width: 220px;
+    }
+    .color-sample {
+      display: inline-block;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid #e0e0e0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      margin: 0;
+    }
+    .location-maps {
+      margin-top: 48px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      background: rgba(251, 238, 230, 0.85);
+      border-radius: 22px;
+      box-shadow: 0 4px 24px #b97a9522;
+      padding: 32px 18px;
+      margin-bottom: 32px;
+    }
+    .location-map-embed {
+      width: 100%;
+      max-width: 700px;
+      height: 440px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      margin-bottom: 8px;
+      border: none;
+    }
+    .location-map-links {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      margin-top: 0;
+    }
+    .location-map-link {
+      font-family: 'Felidae', serif;
+      font-size: 1.1em;
+      color: #4a647a;
+      text-decoration: underline;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.2s;
+      border-radius: 0;
+      box-shadow: none;
+      display: inline;
+    }
+    .location-map-link:hover {
+      color: #222;
+      background: none;
+    }
+    .plan-business {
+      margin: 48px auto 0 auto;
+      padding: 32px 0 32px 0;
+      max-width: 900px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 6px 32px #b97a9522, 0 1.5px 0 #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(251, 238, 230, 0.85);
+      border-radius: 22px;
+      box-shadow: 0 4px 24px #b97a9522;
+      padding: 32px 18px;
+      margin-bottom: 32px;
+    }
+    .plan-business-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 48px;
+      width: 100%;
+    }
+    .plan-business-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 120px;
+      max-width: 180px;
+    }
+    .plan-business-time {
+      font-family: 'Montserrat', 'Arial', sans-serif;
+      font-size: 2.2em;
+      font-weight: 700;
+      color: #181818;
+      margin-bottom: 8px;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+    .plan-business-label {
+      font-size: 1.1em;
+      color: #444;
+      font-family: 'Montserrat', 'Arial', sans-serif;
+      font-weight: 400;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .plan-business-divider {
+      width: 32px;
+      height: 2px;
+      background: #e0e0e0;
+      border-radius: 1px;
+      margin: 10px 0 0 0;
+      opacity: 0.7;
+    }
+    .timeline {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 6px 32px #b97a9522, 0 1.5px 0 #fff;
+      padding: 48px 24px;
+      max-width: 700px;
+      margin: 56px auto 0 auto;
+      position: relative;
+    }
+    .timeline-event {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      min-height: 100px;
+      margin-bottom: 56px;
+    }
+    .timeline-event:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 32px;
+      margin-top: 32px;
+    }
+    .timeline-dot svg {
+      width: 12px;
+      height: 12px;
+      display: block;
+      stroke: #b97a95;
+      fill: none;
+      stroke-width: 4;
+    }
+    .timeline-event::after {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 39px;
+      width: 0;
+      height: calc(100% - 39px);
+      border-left: 2px solid #e0e0e0;
+      z-index: 1;
+    }
+    .timeline-event:last-child::after {
+      height: 40px;
+    }
+    .timeline-content {
+      flex: 1;
+      padding-bottom: 8px;
+      margin-left: 0;
+    }
+    .timeline-time {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #b97a95;
+      margin-bottom: 6px;
+      font-family: 'Montserrat', 'Arial', sans-serif;
+      letter-spacing: 0.01em;
+    }
+    .timeline-title {
+      font-size: 1.25em;
+      font-weight: 700;
+      color: #181818;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', 'Arial', sans-serif;
+    }
+    .timeline-desc {
+      font-size: 1.08em;
+      color: #444;
+      line-height: 1.6;
+      font-family: 'Montserrat', 'Arial', sans-serif;
+    }
+    @media (max-width: 600px) {
+      .photos-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        width: 100vw;
+        max-width: 100vw;
+        padding: 0;
+        margin: 0;
+      }
+      .photo {
+        width: 92vw;
+        max-width: 98vw;
+        height: auto;
+        min-width: 0;
+        min-height: 0;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px #0001;
+      }
+      .photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+      .timeline {
+        padding: 24px 4vw;
+      }
+      .timeline-event {
+        flex-direction: row;
+        align-items: flex-start;
+        min-height: 80px;
+        margin-bottom: 40px;
+      }
+      .timeline-dot {
+        margin: 32px 18px 0 0;
+      }
+      .timeline-event::after {
+        left: 20px;
+        top: 32px;
+        height: calc(100% - 32px);
+      }
+      .timeline-event:last-child::after {
+        height: 32px;
+      }
+      .timeline-content {
+        margin-left: 0;
+      }
+      .timeline-time {
+        font-size: 1em;
+        margin-bottom: 4px;
+      }
+      .dress-code-title {
+        font-size: 1.5em;
+      }
+      .dress-code-palette {
+        gap: 10px 10px;
+        max-width: 98vw;
+      }
+      .color-sample {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    @media (max-width: 700px) {
+      .save-the-date-image {
+        width: 100vw;
+        max-width: 100vw;
+        height: 60vw;
+        min-height: 220px;
+        max-height: 400px;
+      }
+      .save-the-date-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .plan-business-row {
+        flex-direction: column;
+        gap: 0;
+        align-items: center;
+      }
+      .plan-business-item {
+        margin-bottom: 32px;
+        max-width: 100vw;
+      }
+    }
+    .mobile-collage {
+      position: relative;
+      width: 100vw;
+      max-width: 460px;
+      height: 460px;
+      margin: 0 auto 32px auto;
+      display: block;
+    }
+    .collage-photo {
+      position: absolute;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px #0002;
+      background: #fff;
+    }
+    .collage-photo-center {
+      width: 290px;
+      height: 290px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    .collage-photo-left {
+      width: 150px;
+      height: 150px;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+    .collage-photo-right {
+      width: 140px;
+      height: 140px;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+    .collage-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 450px) {
+      .mobile-collage {
+        max-width: 98vw;
+        height: 98vw;
+      }
+      .collage-photo-center {
+        width: 70vw;
+        height: 70vw;
+      }
+      .collage-photo-left {
+        width: 36vw;
+        height: 36vw;
+      }
+      .collage-photo-right {
+        width: 34vw;
+        height: 34vw;
+      }
+    }
+    @media (min-width: 600px) {
+      .mobile-collage {
+        display: none;
+      }
+    }
+    .side-collage {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      max-width: 98vw;
+      margin: 0 auto 32px auto;
+      gap: 18px;
+    }
+    .side-collage-big {
+      width: 200px;
+      height: 200px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px #0002;
+      background: #fff;
+      flex-shrink: 0;
+    }
+    .side-collage-big img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .side-collage-small-block {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .side-collage-small {
+      width: 100px;
+      height: 90px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px #0001;
+      background: #fff;
+    }
+    .side-collage-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 500px) {
+      .side-collage {
+        max-width: 100vw;
+        gap: 8px;
+      }
+      .side-collage-big {
+        width: 44vw;
+        height: 44vw;
+        border-radius: 16px;
+      }
+      .side-collage-small {
+        width: 22vw;
+        height: 20vw;
+        border-radius: 10px;
+      }
+      .side-collage-small-block {
+        gap: 6vw;
+      }
+    }
+    .overlap-collage {
+      position: relative;
+      width: 100vw;
+      max-width: 370px;
+      height: 320px;
+      margin: 0 auto 32px auto;
+    }
+    .overlap-collage-big {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 240px;
+      height: 300px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px #0002;
+      background: #fff;
+      z-index: 1;
+    }
+    .overlap-collage-big img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .overlap-collage-small {
+      position: absolute;
+      width: 200px;
+      height: 170px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px #0002;
+      background: #fff;
+      z-index: 2;
+    }
+    .overlap-collage-small-left {
+      left: 0;
+      bottom: 80px;
+      transform: none;
+    }
+    .overlap-collage-small-right {
+      right: 40px;
+      bottom: 40px;
+      transform: none;
+    }
+    .overlap-collage-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 500px) {
+      .overlap-collage-small {
+        width: 48vw;
+        height: 40vw;
+        border-radius: 5vw;
+      }
+      .overlap-collage-small-left {
+        left: 0;
+        bottom: 18vw;
+      }
+      .overlap-collage-small-right {
+        right: 10vw;
+        bottom: 8vw;
+      }
+    }
+    .cascade-collage {
+      position: relative;
+      width: 100vw;
+      max-width: 420px;
+      height: 520px;
+      margin: 0 auto 32px auto;
+    }
+    .cascade-photo {
+      position: absolute;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px #0002;
+      background: #fff;
+    }
+    .cascade-photo-1 {
+      width: 250px;
+      height: 250px;
+      right: 0;
+      top: 0;
+      z-index: 2;
+      transform: rotate(-7deg);
+    }
+    .cascade-photo-2 {
+      width: 250px;
+      height: 250px;
+      left: 0;
+      top: 60px;
+      z-index: 2;
+      transform: rotate(10deg);
+    }
+    .cascade-photo-3 {
+      width: 250px;
+      height: 250px;
+      left: 100px;
+      top: 240px;
+      z-index: 3;
+      transform: rotate(-4deg);
+    }
+    .cascade-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 500px) {
+      .cascade-collage {
+        max-width: 99vw;
+        height: 130vw;
+      }
+      .cascade-photo-1,
+      .cascade-photo-2,
+      .cascade-photo-3 {
+        width: 52vw;
+        height: 52vw;
+        border-radius: 8vw;
+      }
+      .cascade-photo-1 {
+        right: 0;
+        top: 0;
+        transform: rotate(-7deg);
+      }
+      .cascade-photo-2 {
+        left: 0;
+        top: 12vw;
+        transform: rotate(10deg);
+      }
+      .cascade-photo-3 {
+        left: 22vw;
+        top: 48vw;
+        transform: rotate(-4deg);
+      }
+    }
+    .decor-squiggle-topleft {
+      position: absolute;
+      left: 18px;
+      top: 12px;
+      z-index: 1;
+    }
+    .decor-flower-topright {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      z-index: 1;
+    }
+    .decor-firework-bottomright {
+      position: absolute;
+      right: 18px;
+      bottom: 38px;
+      z-index: 1;
+    }
+    .decor-heart-bottomleft {
+      position: absolute;
+      left: 18px;
+      bottom: 38px;
+      z-index: 1;
+    }
+    .decor-squiggle-bottom {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    @media (max-width: 500px) {
+      .decor-squiggle-topleft { left: 4vw; top: 2vw; width: 10vw; height: 10vw; }
+      .decor-flower-topright { right: 4vw; top: 2vw; width: 8vw; height: 8vw; }
+      .decor-firework-bottomright { right: 4vw; bottom: 8vw; width: 9vw; height: 9vw; }
+      .decor-heart-bottomleft { left: 4vw; bottom: 8vw; width: 7vw; height: 7vw; }
+      .decor-squiggle-bottom { left: 50%; bottom: 2vw; width: 30vw; height: 8vw; }
+    }
+    .photos-row-custom {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin: 0 auto 8px auto;
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+    }
+    .photo-side {
+      width: 210px;
+      height: 440px;
+      border-radius: 0;
+      overflow: hidden;
+      background: none;
+      box-shadow: none;
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-end;
+    }
+    .photo-center {
+      width: 210px;
+      height: 420px;
+      border-radius: 0;
+      overflow: hidden;
+      background: none;
+      box-shadow: none;
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-end;
+      z-index: 2;
+    }
+    .photo-side img, .photo-center img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .photos-row-custom {
+        gap: 2vw;
+        max-width: 98vw;
+        align-items: center;
+      }
+      .photo-side {
+        width: 32vw;
+        height: 66vw;
+        border-radius: 0;
+      }
+      .photo-center {
+        width: 28vw;
+        height: 60vw;
+        border-radius: 0;
+      }
+    }
+    .save-the-date-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1.1fr 1.1fr;
+      gap: 18px;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto 32px auto;
+    }
+    .save-date-cell {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+      min-width: 0;
+      box-shadow: 0 2px 16px #0001;
+      position: relative;
+    }
+    .save-date-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .save-date-pink, .save-date-date {
+      background: linear-gradient(135deg, #fbeee6 60%, #eec6f8 100%);
+      color: #b97a95;
+      font-family: 'Felidae', serif;
+      font-size: 2.6em;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-align: center;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    @media (max-width: 600px) {
+      .save-the-date-grid {
+        max-width: 98vw;
+        gap: 3vw;
+      }
+      .save-date-pink, .save-date-date {
+        font-size: 1.5em;
+        padding: 0 2vw;
+      }
+    }
+    .photos-row-custom-bg {
+      background: rgba(251, 238, 230, 0.85);
+      border-radius: 22px;
+      box-shadow: 0 4px 24px #b97a9522;
+      padding: 32px 18px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .decor-svg {
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    .decor-flower { left: 2vw; top: 8vw; width: 48px; height: 48px; }
+    .decor-heart { right: 4vw; top: 3vw; width: 36px; height: 36px; }
+    .decor-sun { left: 10vw; bottom: 8vw; width: 44px; height: 44px; }
+    .decor-cloud { right: 8vw; bottom: 6vw; width: 60px; height: 36px; }
+    @media (max-width: 600px) {
+      .decor-flower { left: 2vw; top: 18vw; width: 32px; height: 32px; }
+      .decor-heart { right: 2vw; top: 10vw; width: 24px; height: 24px; }
+      .decor-sun { left: 6vw; bottom: 18vw; width: 28px; height: 28px; }
+      .decor-cloud { right: 4vw; bottom: 12vw; width: 38px; height: 22px; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main-names">Никита & Ксения</div>
+  <div class="photos-row-custom-bg">
+    <div class="decor-svg decor-flower">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="10" fill="#eec6f8"/><circle cx="12" cy="12" r="6" fill="#fbeee6"/><circle cx="36" cy="12" r="6" fill="#fbeee6"/><circle cx="12" cy="36" r="6" fill="#fbeee6"/><circle cx="36" cy="36" r="6" fill="#fbeee6"/></svg>
+    </div>
+    <div class="decor-svg decor-heart">
+      <svg viewBox="0 0 36 36"><path d="M18 32s-8-6.6-11-10.3C3 17 2.7 12.7 6 10.1c3.3-2.6 7.3-1 9 1.6C17.7 9.1 21.7 7.5 25 10.1c3.3 2.6 3 6.9-1 11.6C26 25.4 18 32 18 32z" fill="#eec6f8"/></svg>
+    </div>
+    <div class="decor-svg decor-sun">
+      <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="10" fill="#ffe5b4"/><g stroke="#ffe5b4" stroke-width="3"><line x1="22" y1="2" x2="22" y2="14"/><line x1="22" y1="30" x2="22" y2="42"/><line x1="2" y1="22" x2="14" y2="22"/><line x1="30" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="16" y2="16"/><line x1="36" y1="8" x2="28" y2="16"/><line x1="8" y1="36" x2="16" y2="28"/><line x1="36" y1="36" x2="28" y2="28"/></g></svg>
+    </div>
+    <div class="decor-svg decor-cloud">
+      <svg viewBox="0 0 60 36"><ellipse cx="20" cy="28" rx="20" ry="8" fill="#eec6f8"/><ellipse cx="40" cy="20" rx="18" ry="12" fill="#fbeee6"/></svg>
+    </div>
+    <div class="photos-row-custom">
+      <div class="photo-side">
+        <img src="никита.jpg" alt="Никита">
+      </div>
+      <div class="photo-center">
+        <img src="d5fa33d9-6db7-4e93-bacc-8680ffea1c35.jpg" alt="Вместе">
+      </div>
+      <div class="photo-side">
+        <img src="ксюша.jpg" alt="Ксения">
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="invite-message">
+      <div class="invite-title">Дорогие друзья и родные</div>
+      <div class="invite-text">В нашей жизни скоро состоится важное событие - наша свадьба</div>
+    </div>
+    <div class="save-the-date">
+      <div class="save-the-date-grid">
+        <div class="save-date-cell"><img class="save-date-img" src="оба.jpg" alt="Вместе"></div>
+        <div class="save-date-cell save-date-pink">SAVE<br>THE<br>DATE</div>
+        <div class="save-date-cell save-date-date">16.08.2025<br><span style='font-weight:normal; font-size:0.7em; color:#b97a95;'>день, когда мы станем семьей</span></div>
+        <div class="save-date-cell"><img class="save-date-img" src="красота.jpg" alt="Красота"></div>
+      </div>
+    </div>
+    <div class="countdown countdown-centered">
+      <div class="countdown-numbers">
+        <div class="countdown-item">
+          <div class="countdown-value" id="days">000</div>
+          <div class="countdown-label">дней</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="hours">00</div>
+          <div class="countdown-label">часов</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="minutes">00</div>
+          <div class="countdown-label">минут</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="seconds">00</div>
+          <div class="countdown-label">секунд</div>
+        </div>
+      </div>
+    </div>
+    <div class="calendar-block">
+      <div class="calendar">
+        <div class="calendar-month">Август 2025</div>
+        <table class="calendar-table">
+          <tr>
+            <th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th>Вс</th>
+          </tr>
+          <tr>
+            <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td>
+          </tr>
+          <tr>
+            <td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+          </tr>
+          <tr>
+            <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+            <td class="wedding-day">16
+              <span class="calendar-heart">❤</span>
+            </td>
+            <td>17</td>
+          </tr>
+          <tr>
+            <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+          </tr>
+          <tr>
+            <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+          </tr>
+        </table>
+      </div>
+      <div class="calendar-label">Отметьте этот день в календаре!</div>
+    </div>
+    <div class="invite-final-message">Мы приглашаем вас разделить с нами<br>этот особенный день!</div>
+    <div class="location">
+      <div class="location-content">
+        <div class="location-title">LOCATION</div>
+        <div class="location-wait">Будем ждать вас по адресу:</div>
+        <div class="location-address">Кадинский сельсовет 50к12</div>
+      </div>
+      <div class="location-image">
+        <img src="место.avif" alt="место проведения" loading="lazy">
+      </div>
+    </div>
+    <div class="gift-message">Цветы очаровательны, но, к сожалению, недолговечны, приятным комплиментом для нас вместо цветов будет бутылочка вашего любимого алкогольного напитка, который мы откроем на ближайшем совместном празднике.</div>
+    <div class="plan-business">
+      <div class="timeline">
+        <div class="timeline-event">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-5.2-4.3-7.2-6.7C2.2 12.1 2 9.1 4.1 7.3c2.1-1.8 4.7-0.7 5.9 1.1C11 9.7 12 11 12 11s1-1.3 2-2.6c1.2-1.8 3.8-2.9 5.9-1.1 2.1 1.8 1.9 4.8-0.7 7C17.2 16.7 12 21 12 21z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-time">14:20</div>
+            <div class="timeline-title">Трансфер</div>
+            <div class="timeline-desc">Сбор гостей и отправление к месту церемонии.</div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-5.2-4.3-7.2-6.7C2.2 12.1 2 9.1 4.1 7.3c2.1-1.8 4.7-0.7 5.9 1.1C11 9.7 12 11 12 11s1-1.3 2-2.6c1.2-1.8 3.8-2.9 5.9-1.1 2.1 1.8 1.9 4.8-0.7 7C17.2 16.7 12 21 12 21z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-time">15:00</div>
+            <div class="timeline-title">Церемония</div>
+            <div class="timeline-desc">Торжественная регистрация и обмен клятвами.</div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-5.2-4.3-7.2-6.7C2.2 12.1 2 9.1 4.1 7.3c2.1-1.8 4.7-0.7 5.9 1.1C11 9.7 12 11 12 11s1-1.3 2-2.6c1.2-1.8 3.8-2.9 5.9-1.1 2.1 1.8 1.9 4.8-0.7 7C17.2 16.7 12 21 12 21z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-time">15:30</div>
+            <div class="timeline-title">Фотосессия</div>
+            <div class="timeline-desc">Памятные фотографии с молодожёнами и гостями.</div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-5.2-4.3-7.2-6.7C2.2 12.1 2 9.1 4.1 7.3c2.1-1.8 4.7-0.7 5.9 1.1C11 9.7 12 11 12 11s1-1.3 2-2.6c1.2-1.8 3.8-2.9 5.9-1.1 2.1 1.8 1.9 4.8-0.7 7C17.2 16.7 12 21 12 21z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-time">17:00</div>
+            <div class="timeline-title">Банкет</div>
+            <div class="timeline-desc">Праздничный ужин, тосты и веселье до позднего вечера.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dress-code-block">
+      <div class="dress-code-title">Мы будем рады если вы поддержите цветовую гамму нашего вечера</div>
+      <div class="dress-code-section">
+        <div class="dress-code-label">Для мужчин: тёмно-серые, коричневые, бежевые, синие, неяркие оттенки</div>
+        <div class="dress-code-palette">
+          <span class="color-sample" style="background:#444"></span>
+          <span class="color-sample" style="background:#7a5c3e"></span>
+          <span class="color-sample" style="background:#d2b48c"></span>
+          <span class="color-sample" style="background:#4a647a"></span>
+          <span class="color-sample" style="background:#888"></span>
+          <span class="color-sample" style="background:#22334a"></span>
+          <span class="color-sample" style="background:#8a8773"></span>
+          <span class="color-sample" style="background:#e0e0e0"></span>
+        </div>
+      </div>
+      <div class="dress-code-section">
+        <div class="dress-code-label">Для дам: розовые и светлые оттенки</div>
+        <div class="dress-code-palette">
+          <span class="color-sample" style="background:#f8c6d8"></span>
+          <span class="color-sample" style="background:#fbeee6"></span>
+          <span class="color-sample" style="background:#f7e1e8"></span>
+          <span class="color-sample" style="background:#eec6f8"></span>
+          <span class="color-sample" style="background:#fff0f5"></span>
+          <span class="color-sample" style="background:#ffe5b4"></span>
+          <span class="color-sample" style="background:#e6e6fa"></span>
+          <span class="color-sample" style="background:#fff9c4"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="location-maps">
+    <iframe class="location-map-embed" src="https://yandex.ru/map-widget/v1/?text=Кадинский%20сельсовет%2C%2050к12" frameborder="0" allowfullscreen></iframe>
+    <div class="location-map-links">
+      <a class="location-map-link" href="https://yandex.ru/maps/?text=Кадинский%20сельсовет%2C50к12" target="_blank">Открыть в Яндекс.Картах</a>
+      <a class="location-map-link" href="https://www.google.com/maps/search/?api=1&query=Кадинский+сельсовет%2C+50к12" target="_blank">Открыть в Google Maps</a>
+    </div>
+  </div>
+  <script>
+    function updateCountdown() {
+      const weddingDate = new Date('2025-08-16T00:00:00');
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+  <!-- SVG-декор на белом фоне, вне блоков с контентом -->
+  <div class="decor-svg decor-flower" style="top: 3vw; left: 2vw; position: fixed;"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="10" fill="#eec6f8"/><circle cx="12" cy="12" r="6" fill="#fbeee6"/><circle cx="36" cy="12" r="6" fill="#fbeee6"/><circle cx="12" cy="36" r="6" fill="#fbeee6"/><circle cx="36" cy="36" r="6" fill="#fbeee6"/></svg></div>
+  <div class="decor-svg decor-heart" style="top: 8vw; right: 4vw; position: fixed;"><svg viewBox="0 0 36 36"><path d="M18 32s-8-6.6-11-10.3C3 17 2.7 12.7 6 10.1c3.3-2.6 7.3-1 9 1.6C17.7 9.1 21.7 7.5 25 10.1c3.3 2.6 3 6.9-1 11.6C26 25.4 18 32 18 32z" fill="#eec6f8"/></svg></div>
+  <div class="decor-svg decor-sun" style="bottom: 8vw; left: 6vw; position: fixed;"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="10" fill="#ffe5b4"/><g stroke="#ffe5b4" stroke-width="3"><line x1="22" y1="2" x2="22" y2="14"/><line x1="22" y1="30" x2="22" y2="42"/><line x1="2" y1="22" x2="14" y2="22"/><line x1="30" y1="22" x2="42" y2="22"/><line x1="8" y1="8" x2="16" y2="16"/><line x1="36" y1="8" x2="28" y2="16"/><line x1="8" y1="36" x2="16" y2="28"/><line x1="36" y1="36" x2="28" y2="28"/></g></svg></div>
+  <div class="decor-svg decor-cloud" style="bottom: 6vw; right: 8vw; position: fixed;"><svg viewBox="0 0 60 36"><ellipse cx="20" cy="28" rx="20" ry="8" fill="#eec6f8"/><ellipse cx="40" cy="20" rx="18" ry="12" fill="#fbeee6"/></svg></div>
+</body>
+</html>
